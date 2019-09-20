@@ -1,0 +1,12 @@
+$(document).ready(function(){$('.menu-list').hover(function(){$(this).children().toggleClass('visible');});$(window).scroll(function(){var scrolled=$(window).scrollTop();var headerHeight=$('.main-header').height();if(scrolled>(headerHeight/15)){$('.phone').css('margin-top','-200px');}else{$('.phone').css('margin-top','0px');}
+if(scrolled>(headerHeight/15)&&scrolled<headerHeight){$('.home-nav').addClass('scrolling-header');$('.nav-icon').children().addClass('scrolling-header');}else if(scrolled>headerHeight){$('.home-nav').addClass('scrolled');$('.nav-icon').children().addClass('scrolled');}else{$('.home-nav').removeClass('scrolled');$('.nav-icon').children().removeClass('scrolled');$('.home-nav').removeClass('scrolling-header');$('.nav-icon').children().removeClass('scrolling-header');}});$('.signin-btn').click(function(){doslide();});$('.closeslide').click(function(){closeslide();});$('.nav-icon').click(function(){$(this).toggleClass('tapped');$('body').toggleClass('no-scroll');$('.mobile-nav').toggleClass('visible');});});function doslide(){topFunction('noscroll');$('.signin-modal').addClass('visible');$('body').addClass('no-scroll');$('.mobile-nav').removeClass('visible');$('.nav-icon').toggleClass('tapped');}
+function closeslide(){enable_scroll();$('.signin-modal').removeClass('visible');$('body','html').removeClass('no-scroll');}
+spectrum();setInterval(function(){spectrum();},10000);function getRandomArbitrary(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+function getNumberSequence(num){if(num<4){num=num+1;}else{num=1;}
+return num;}
+var er;function spectrum(){er=getNumberSequence(er);if(er==1){var hue='rgb(20, 68, 153)';}else if(er==2){var hue='rgb(20, 40, 153)';}else if(er==3){var hue='rgb(100, 5, 130)';}else if(er==4){var hue='rgb(58, 74, 103)';}
+$('.main-header_').animate({backgroundColor:hue},10000);}
+function topFunction(val){$('html, body').stop().animate({scrollTop:0},700,function(){if(val=='noscroll'){disable_scroll();}else{enable_scroll();}});}
+function scrollToElement(ele){$('html, body').animate({scrollTop:$(ele).offset().top},1000);}
+function disable_scroll(){$('body').addClass('noscroll');}
+function enable_scroll(){$('body').removeClass('noscroll');}
